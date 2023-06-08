@@ -217,59 +217,100 @@ public:
 		cout << "(" << A << ")" << " * x^2 + " << "(" << B << ")" << " * x + " << "(" << C << ")" << endl << "(" << A << ")" << " * x^2 + " << "(" << B << ")" << " * x = 0 " << endl;
 	}
 };
+
+class QuadraticEquation {
+private:
+	double A, B, C;
+
+public:
+    QuadraticEquation(double coeffA, double coeffB, double coeffC)
+        : A(coeffA), B(coeffB), C(coeffC) {}
+
+    void displayTheory() {
+		std::cout << " \n";
+        std::cout << "Теория решения квадратных уравнений:\n";
+        std::cout << "Квадратное уравнение имеет общий вид: ax^2 + bx + c = 0\n";
+        std::cout << "Для решения квадратного уравнения можно использовать формулу Дискриминанта(D):\n";
+        std::cout << "D = b^2 - 4ac\n";
+        std::cout << "Если D > 0, то уравнение имеет два различных корня:\n";
+        std::cout << "x1 = (-b + sqrt(D)) / (2a)\n";
+        std::cout << "x2 = (-b - sqrt(D)) / (2a)\n";
+        std::cout << "Если D = 0, то уравнение имеет один корень:\n";
+        std::cout << "x = -b / (2a)\n";
+        std::cout << "Если D < 0, то уравнение не имеет корней.\n";
+		
+    }
+
+    
+};
+
 int main() {
-	setlocale(LC_ALL, "Russian");
-	int n;
-	cout << "Введите количество уравнений";
-	cin >> n;
-	for (int i=1; i < n + 1; i++) {
-		cout << "Введите коэффициенты для " << i << " - ого уравнения" << endl;
-		double a, b, c;
-		cin >> a >> b >> c;
-		if (a != 0 && b != 0 && c != 0) {
-			type_6 eq2(a, b, c);
-			eq2.type_6_show();
-			eq2.type_6_get_answer();
-			eq2.type_6_get_answer_podbor();
-		}
-		else if (a == 0 && b == 0 && c == 0) {
-			type_1 eq2(a, b, c);
-			eq2.type_1_show();
-			eq2.type_1_get_answer();
-		}
-		else if (a != 0 && b == 0 && c == 0) {
-			type_2 eq2(a, b, c);
-			eq2.type_2_show();
-			eq2.type_2_get_answer();
-		}
-		else if (a == 0 && b != 0 && c == 0) {
-			type_7 eq2(a, b, c);
-			eq2.type_7_show();
-			eq2.type_7_get_answer();
-		}
-		else if (a == 0 && b == 0 && c != 0) {
-			type_3 eq2(a, b, c);
-			eq2.type_3_show();
-			eq2.type_3_get_answer();
-		}
-		else if (a != 0 && b != 0 && c == 0) {
-			type_8 eq2(a, b, c);
-			eq2.type_8_show();
-			eq2.type_8_get_answer();
-			eq2.type_8_get_answer_podbor();
-		}
-		else if (a != 0 && b == 0 && c != 0) {
-			type_4 eq2(a, b, c);
-			eq2.type_4_show();
-			eq2.type_4_get_answer();
-			eq2.type_4_get_answer_podbor();
-		}
-		else if (a == 0 && b != 0 && c != 0) {
-			type_5 eq2(a, b, c);
-			eq2.type_5_show();
-			eq2.type_5_get_answer();
-			eq2.type_5_get_answer_podbor();
-		}
+	setlocale(LC_ALL, "RUSSIAN");
+	int choice;
+	std::cout << "Выберите действие:\n";
+	std::cout << "1. Вывести теоретическую часть\n";
+	std::cout << "2. Решить квадратное уравнение\n";
+	std::cout << "Ваш Выбор: ";
+	std::cin >> choice;
+	
+
+	if (choice == 1) {
+		QuadraticEquation equation(0, 0, 0);
+		equation.displayTheory();
 	}
-	return 0;
+	else if (choice == 2) {
+		int n;
+		cout << "Введите кол-во уравнений: ";
+		cin >> n;
+		for (int i = 1; i < n + 1; i++) {
+			cout << "Введите коэффициенты для " << i << " - го уравнения" << endl;
+			double a, b, c;
+			cin >> a >> b >> c;
+			if (a != 0 && b != 0 && c != 0) {
+				type_6 eq2(a, b, c);
+				eq2.type_6_show();
+				eq2.type_6_get_answer();
+				eq2.type_6_get_answer_podbor();
+			}
+			else if (a == 0 && b == 0 && c == 0) {
+				type_1 eq2(a, b, c);
+				eq2.type_1_show();
+				eq2.type_1_get_answer();
+			}
+			else if (a != 0 && b == 0 && c == 0) {
+				type_2 eq2(a, b, c);
+				eq2.type_2_show();
+				eq2.type_2_get_answer();
+			}
+			else if (a == 0 && b != 0 && c == 0) {
+				type_7 eq2(a, b, c);
+				eq2.type_7_show();
+				eq2.type_7_get_answer();
+			}
+			else if (a == 0 && b == 0 && c != 0) {
+				type_3 eq2(a, b, c);
+				eq2.type_3_show();
+				eq2.type_3_get_answer();
+			}
+			else if (a != 0 && b != 0 && c == 0) {
+				type_8 eq2(a, b, c);
+				eq2.type_8_show();
+				eq2.type_8_get_answer();
+				eq2.type_8_get_answer_podbor();
+			}
+			else if (a != 0 && b == 0 && c != 0) {
+				type_4 eq2(a, b, c);
+				eq2.type_4_show();
+				eq2.type_4_get_answer();
+				eq2.type_4_get_answer_podbor();
+			}
+			else if (a == 0 && b != 0 && c != 0) {
+				type_5 eq2(a, b, c);
+				eq2.type_5_show();
+				eq2.type_5_get_answer();
+				eq2.type_5_get_answer_podbor();
+			}
+		}
+		return 0;
+	}
 }
